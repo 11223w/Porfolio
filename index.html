@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Bryan Morgan, a web developer building clean, fast websites.">
+  <meta name="theme-color" content="#030409">
+  <title>Bryan Morgan | Web Developer</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== HEADER / NAVIGATION ===== -->
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a href="index.html" class="logo">Alex<span>.dev</span></a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="project.html" class="nav-link">Projects</a></li>
+        <li><a href="skills.html" class="nav-link">Skills</a></li>
+        <li><a href="resume.html" class="nav-link">Resume</a></li>
+        <li class="has-dropdown">
+          <button type="button" class="dropdown-toggle" id="dropdown-toggle" aria-expanded="false" aria-controls="more-menu">More</button>
+          <ul class="dropdown" id="more-menu">
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="problem-solving.html" class="nav-link">Problem Solving</a></li>
+          <li><a href="security.html" class="nav-link">Security</a></li>
+          <li><a href="ailog.html" class="nav-link">AI Log</a></li>
+          <li><a href="employability.html" class="nav-link">Employability</a></li>
+          <li><a href="certificate.html" class="nav-link">Certificates</a></li>
+          <li><a href="github.html" class="nav-link">GitHub</a></li>
+          <li><a href="reflection.html" class="nav-link">Reflection</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">Available for freelance work</p>
+          <h1>I build clean, fast and <span class="highlight">friendly</span> websites.</h1>
+          <p class="hero-lead">I'm Bryan Morgan, a front-end web developer who turns ideas into responsive, accessible experiences people enjoy using.</p>
+          <div class="btn-group">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+          </div>
+          <ul class="tag-list hero-tags" aria-label="Core technologies">
+            <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Git</li>
+          </ul>
+        </div>
+        <div class="avatar avatar-large" aria-hidden="true">AM</div>
+      </div>
+      <ul class="container stats" aria-label="At a glance">
+        <li><strong>3</strong><span>Featured projects</span></li>
+        <li><strong>100%</strong><span>Responsive layouts</span></li>
+        <li><strong>0</strong><span>Frameworks needed</span></li>
+      </ul>
+    </section>
+
+    <!-- ===== ABOUT PREVIEW ===== -->
+    <section class="section">
+      <div class="container narrow text-center">
+        <h2 class="section-title">A Little About Me</h2>
+        <p class="section-lead">I love combining clean design with solid code. I focus on performance, accessibility and details that make a site feel polished.</p>
+        <a href="about.html" class="btn btn-secondary">Read My Full Story</a>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <h2 class="section-title text-center">Skills</h2>
+        <div class="grid grid-4">
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">&lt;/&gt;</span>
+            <h3>HTML5</h3>
+            <p>Semantic, accessible page structure.</p>
+          </article>
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">{ }</span>
+            <h3>CSS3</h3>
+            <p>Flexbox, Grid and responsive layouts.</p>
+          </article>
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">JS</span>
+            <h3>JavaScript</h3>
+            <p>Interactive features with vanilla JS.</p>
+          </article>
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">&#8627;</span>
+            <h3>Git &amp; GitHub</h3>
+            <p>Version control and collaboration.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <h2 class="section-title text-center">Featured Projects</h2>
+        <div class="grid grid-3">
+          <!-- To add a project, copy one <article class="card project-card"> block -->
+          <article class="card project-card">
+            <div class="project-thumb thumb-one" role="img" aria-label="Project one preview"></div>
+            <div class="project-body">
+              <ul class="tag-list" aria-label="Technologies used"><li>HTML</li><li>CSS</li><li>JS</li></ul>
+              <h3>Recipe Finder</h3>
+              <p>A searchable recipe app with filters and a clean card layout.</p>
+              <a href="https://github.com/" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-thumb thumb-two" role="img" aria-label="Project two preview"></div>
+            <div class="project-body">
+              <ul class="tag-list" aria-label="Technologies used"><li>API</li><li>CSS Grid</li><li>JS</li></ul>
+              <h3>Weather Dashboard</h3>
+              <p>A responsive dashboard that shows forecasts in a simple interface.</p>
+              <a href="https://github.com/" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-thumb thumb-three" role="img" aria-label="Project three preview"></div>
+            <div class="project-body">
+              <ul class="tag-list" aria-label="Technologies used"><li>JS</li><li>localStorage</li></ul>
+              <h3>Task Planner</h3>
+              <p>A to-do app with categories, due dates and local saving.</p>
+              <a href="https://github.com/" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT CALL TO ACTION ===== -->
+    <section class="section cta">
+      <div class="container narrow text-center">
+        <h2>Let's work together</h2>
+        <p>Have a project in mind? I'd love to hear about it.</p>
+        <a href="contact.html" class="btn btn-light">Contact Me</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Bryan Morgan. All rights reserved.</p>
+      <ul class="social-links">
+        <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+      </ul>
+    </div>
+  </footer>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">&uarr;</button>
+</body>
+</html>

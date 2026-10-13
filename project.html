@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects built by Alex Morgan with HTML, CSS and JavaScript.">
+  <meta name="theme-color" content="#030409">
+  <title>Projects | Alex Morgan</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== HEADER / NAVIGATION ===== -->
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a href="index.html" class="logo">Alex<span>.dev</span></a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="project.html" class="nav-link">Projects</a></li>
+        <li><a href="skills.html" class="nav-link">Skills</a></li>
+        <li><a href="resume.html" class="nav-link">Resume</a></li>
+        <li class="has-dropdown">
+          <button type="button" class="dropdown-toggle" id="dropdown-toggle" aria-expanded="false" aria-controls="more-menu">More</button>
+          <ul class="dropdown" id="more-menu">
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="problem-solving.html" class="nav-link">Problem Solving</a></li>
+          <li><a href="security.html" class="nav-link">Security</a></li>
+          <li><a href="ailog.html" class="nav-link">AI Log</a></li>
+          <li><a href="employability.html" class="nav-link">Employability</a></li>
+          <li><a href="certificate.html" class="nav-link">Certificates</a></li>
+          <li><a href="github.html" class="nav-link">GitHub</a></li>
+          <li><a href="reflection.html" class="nav-link">Reflection</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===== PAGE BANNER ===== -->
+    <section class="page-banner">
+      <div class="container">
+        <h1>My <span class="highlight">Projects</span></h1>
+        <p>Things I have built while learning and practising.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title text-center">All Projects</h2>
+        <div class="grid grid-3">
+          <article class="card project-card">
+            <div class="project-thumb thumb-one" role="img" aria-label="Project one preview"></div>
+            <div class="project-body">
+              <ul class="tag-list" aria-label="Tags"><li>HTML</li><li>CSS</li><li>JS</li></ul>
+              <h3>Recipe Finder</h3>
+              <p>A searchable recipe app with filters and a clean card layout.</p>
+              <a href="https://github.com/" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-thumb thumb-two" role="img" aria-label="Project two preview"></div>
+            <div class="project-body">
+              <ul class="tag-list" aria-label="Tags"><li>API</li><li>CSS Grid</li><li>JS</li></ul>
+              <h3>Weather Dashboard</h3>
+              <p>A responsive dashboard that shows forecasts in a simple interface.</p>
+              <a href="https://github.com/" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-thumb thumb-three" role="img" aria-label="Project three preview"></div>
+            <div class="project-body">
+              <ul class="tag-list" aria-label="Tags"><li>JS</li><li>localStorage</li></ul>
+              <h3>Task Planner</h3>
+              <p>A to-do app with categories, due dates and local saving.</p>
+              <a href="https://github.com/" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-thumb thumb-four" role="img" aria-label="Project four preview"></div>
+            <div class="project-body">
+              <ul class="tag-list" aria-label="Tags"><li>HTML</li><li>CSS</li><li>JS</li></ul>
+              <h3>Personal Portfolio</h3>
+              <p>This multi-page portfolio, built with plain HTML, CSS and JavaScript.</p>
+              <a href="https://github.com/" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-thumb thumb-five" role="img" aria-label="Project five preview"></div>
+            <div class="project-body">
+              <ul class="tag-list" aria-label="Tags"><li>JS</li><li>DOM</li></ul>
+              <h3>Budget Tracker</h3>
+              <p>Tracks income and expenses with a simple summary and category totals.</p>
+              <a href="https://github.com/" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-thumb thumb-six" role="img" aria-label="Project six preview"></div>
+            <div class="project-body">
+              <ul class="tag-list" aria-label="Tags"><li>JS</li><li>Accessibility</li></ul>
+              <h3>Quiz App</h3>
+              <p>A multiple-choice quiz with scoring and instant feedback.</p>
+              <a href="https://github.com/" class="text-link" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="container narrow text-center">
+        <h2>Like what you see?</h2>
+        <p>I'd love to hear from you.</p>
+        <a href="contact.html" class="btn btn-light">Contact Me</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Alex Morgan. All rights reserved.</p>
+      <ul class="social-links">
+        <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">&uarr;</button>
+</body>
+</html>
