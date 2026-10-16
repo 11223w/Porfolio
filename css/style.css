@@ -617,6 +617,84 @@ textarea { resize: vertical; min-height: 130px; }
 }
 
 /* =========================================================
+   13b. PROJECT PAGES (cards with images, galleries, code, bars)
+   ========================================================= */
+/* Let grid children shrink, so wide code blocks scroll inside their card instead of stretching the page */
+.grid > *, .gallery > * { min-width: 0; }
+
+.project-thumb-img {
+  display: block; width: 100%; height: 190px; object-fit: cover; object-position: top;
+  border-bottom: 1px solid var(--border); transition: transform 0.5s ease;
+}
+.project-card:hover .project-thumb-img { transform: scale(1.06); }
+
+.project-intro { padding-bottom: 1rem; }
+.back-link { display: inline-block; margin-bottom: 1.25rem; font-weight: 600; }
+.back-link:hover { color: var(--accent); }
+.project-status { margin: 1.5rem 0 0; }
+.link-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+
+/* "On this page" jump links */
+.page-toc { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+.page-toc a {
+  padding: 0.35rem 1rem; border-radius: 999px; font-size: 0.92rem; color: var(--text);
+  border: 1px solid var(--border-strong); background: rgba(255, 255, 255, 0.04);
+  transition: border-color var(--transition), background var(--transition);
+}
+.page-toc a:hover { border-color: var(--accent); background: rgba(34, 211, 238, 0.08); }
+
+.sub-title { margin: 2.5rem 0 1rem; font-size: 1.3rem; }
+.small-note { margin-top: 1rem; font-size: 0.9rem; color: var(--muted); }
+.bullet-list { display: grid; gap: 0.5rem; padding-left: 1.2rem; list-style: disc; color: var(--muted); }
+.num-list { display: grid; gap: 0.6rem; padding-left: 1.3rem; list-style: decimal; color: var(--muted); }
+.num-list strong { color: var(--heading); }
+.card .tag-list { margin-top: 1rem; }
+.card .tag-list + p { margin-top: 1rem; }
+
+/* Highlighted prompt for text you still need to write yourself */
+.fill { padding: 1rem; border: 1px dashed var(--accent); border-radius: 10px; background: rgba(34, 211, 238, 0.06); color: var(--accent) !important; }
+
+/* Image galleries */
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.25rem; }
+.gallery-3 { grid-template-columns: repeat(3, 1fr); }
+.gallery-1 { grid-template-columns: 1fr; }
+.gallery figure { margin: 0; overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.gallery img { display: block; width: 100%; height: auto; background: #0a0c14; }
+.gallery-photos img { aspect-ratio: 4 / 3; object-fit: cover; }
+.gallery figcaption { padding: 0.85rem 1rem 1rem; font-size: 0.92rem; color: var(--muted); }
+.gallery figcaption strong { display: block; margin-bottom: 0.15rem; color: var(--heading); }
+
+/* Code blocks */
+.code-block {
+  overflow-x: auto; margin-top: 0.75rem; padding: 1.25rem; tab-size: 2;
+  background: #05060d; border: 1px solid var(--border); border-radius: 12px;
+  font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.6; color: #d1d5e6;
+}
+
+/* Dashboard numbers and bar charts (pure CSS, no chart library) */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1.25rem 0 1.5rem; }
+.kpi { padding: 1.25rem; text-align: center; }
+.kpi strong { display: block; font-size: 2rem; font-weight: 800; line-height: 1.2; color: var(--heading); }
+.kpi span { font-size: 0.9rem; color: var(--muted); }
+.bars { display: grid; gap: 0.65rem; margin-top: 1rem; }
+.bar-row { display: grid; grid-template-columns: 5rem 1fr 3rem; gap: 0.6rem; align-items: center; font-size: 0.88rem; color: var(--muted); }
+.bar-row b { text-align: right; font-weight: 600; color: var(--heading); }
+.bar-track { height: 10px; border-radius: 999px; overflow: hidden; background: rgba(255, 255, 255, 0.08); }
+.bar-fill { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+
+@media (max-width: 992px) {
+  .gallery-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery { gap: 1rem; }
+}
+@media (max-width: 520px) {
+  .gallery, .gallery-3 { grid-template-columns: 1fr; }
+  .link-row .btn { width: 100%; }
+}
+
+/* =========================================================
    14. PRINT (used by the "Print / Save as PDF" button on the resume page)
    ========================================================= */
 @media print {

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Click And Sip Cafe, a coffee shop web application built with PHP and MySQL as a group project.">
+  <meta name="theme-color" content="#030409">
+  <title>Click And Sip Cafe | Bryan Agraan</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body data-nav="project.html">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== HEADER / NAVIGATION ===== -->
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a href="index.html" class="logo">Bryan<span>.dev</span></a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="project.html" class="nav-link">Projects</a></li>
+        <li><a href="skills.html" class="nav-link">Skills</a></li>
+        <li><a href="resume.html" class="nav-link">Resume</a></li>
+        <li class="has-dropdown">
+          <button type="button" class="dropdown-toggle" id="dropdown-toggle" aria-expanded="false" aria-controls="more-menu">More</button>
+          <ul class="dropdown" id="more-menu">
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="problem-solving.html" class="nav-link">Problem Solving</a></li>
+          <li><a href="security.html" class="nav-link">Security</a></li>
+          <li><a href="ailog.html" class="nav-link">AI Log</a></li>
+          <li><a href="employability.html" class="nav-link">Employability</a></li>
+          <li><a href="certificate.html" class="nav-link">Certificates</a></li>
+          <li><a href="github.html" class="nav-link">GitHub</a></li>
+          <li><a href="reflection.html" class="nav-link">Reflection</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===== PAGE BANNER ===== -->
+    <section class="page-banner">
+      <div class="container">
+        <h1>Click And <span class="highlight">Sip Cafe</span></h1>
+        <p>Project 1: a coffee shop web app with login and a database.</p>
+      </div>
+    </section>
+
+    <section class="section project-intro">
+      <div class="container">
+        <a href="project.html" class="back-link">&larr; All projects</a>
+        <div class="callout">
+          <h3>Group project</h3>
+          <p>Completed together with <strong>Edward S. Vidal</strong>. The documentation, screenshots and results below come from our shared project work.</p>
+        </div>
+        <p class="section-lead project-status"><strong>Status:</strong> Code reviewed and fixed. Testing on XAMPP is in progress.</p>
+        <nav class="page-toc" aria-label="On this page"><a href="#overview">Overview</a><a href="#database">Database</a><a href="#screens">Screenshots</a><a href="#fixes">Fixes &amp; testing</a></nav>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Click And Sip Cafe</h2>
+        <div id="overview"></div>
+        <div class="grid grid-2">
+          <article class="card">
+            <h3>Overview</h3>
+            <p>Customers register and log in, browse the menu, add drinks to a cart and place an order. The order is saved in the database with an invoice number, then the customer chooses Cash or GCash.</p>
+            <ul class="tag-list" aria-label="Tags"><li>PHP</li><li>MySQL</li><li>HTML, CSS, JavaScript</li><li>XAMPP</li></ul>
+          </article>
+          <article class="card">
+            <h3>Source and our part</h3>
+            <p>The original source code was provided by a group member's cousin. We reviewed it, fixed the problems listed below, wrote the README and test cases, and prepared it to run on XAMPP. AI was used to help with the fixes (see the <a href="ailog.html">AI Log</a>).</p>
+          </article>
+          <article class="card">
+            <h3>Features</h3>
+            <ul class="bullet-list">
+              <li>Registration with checks: no empty fields, valid email, password of at least 6 characters, no duplicate username or email</li>
+              <li>Login and logout with a session; the shop and payment pages need a login</li>
+              <li>Menu with a cart: add items, change quantity, remove items, live total</li>
+              <li>Orders saved to the database, one invoice per order, linked to the logged-in user</li>
+              <li>Payment page for Cash or GCash, saved against the order</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>My contribution</h3>
+            <p>I suggested the web app idea for this project: an online ordering website for a coffee shop, with login, a cart and payment. The group then reviewed, fixed and documented the code together.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Database (MySQL)</h2>
+        <div id="database"></div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <caption class="sr-only">MySQL database tables</caption>
+            <thead><tr><th scope="col">Table</th><th scope="col">What it stores</th><th scope="col">Main columns</th></tr></thead>
+            <tbody>
+              <tr><td><code>users</code></td><td>Customer accounts</td><td>name, username, email, password (stored as a hash), create_datetime</td></tr>
+              <tr><td><code>orders</code></td><td>One row per item; rows with the same invoice number are one order</td><td>title, price, quantity, subtotal_amount, date, invoice_number, user_id</td></tr>
+              <tr><td><code>payment_method</code></td><td>The payment chosen for an order</td><td>invoice_number, user_id, payment_type, amount, payment_status, date_created</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Screenshots of the Interface</h2>
+        <div id="screens"></div>
+        <p class="section-lead">These pictures show how each page looks.</p>
+        <div class="gallery ">
+          <figure>
+            <img src="assets/images/projects/project1-home.jpg" alt="Home page for visitors who are not logged in" loading="lazy">
+            <figcaption><strong>1. Home page (guest)</strong>Home page for visitors who are not logged in</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/projects/project1-login.jpg" alt="Login form" loading="lazy">
+            <figcaption><strong>2. Login</strong>Login form</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/projects/project1-registration.jpg" alt="Registration form" loading="lazy">
+            <figcaption><strong>3. Registration</strong>Registration form</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/projects/project1-shop.jpg" alt="Shop page shown after login, with a Logout link" loading="lazy">
+            <figcaption><strong>4. Shop after login</strong>Shop page shown after login, with a Logout link</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/projects/project1-cart.jpg" alt="Cart with three items and the total" loading="lazy">
+            <figcaption><strong>5. Cart</strong>Cart with three items and the total</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/projects/project1-payment.jpg" alt="Payment page with Cash and GCash options" loading="lazy">
+            <figcaption><strong>6. Payment</strong>Payment page with Cash and GCash options</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Fixes, Testing and Limits</h2>
+        <div id="fixes"></div>
+        <div class="grid grid-2">
+          <article class="card">
+            <h3>Problems we fixed</h3>
+            <ul class="bullet-list">
+              <li>The database script had errors and could not be imported, so it was rewritten.</li>
+              <li>The payment code used a table name that did not exist.</li>
+              <li>Orders were not saved properly, and every payment went to order number 1. Each order now has its own invoice, and the amount is calculated again on the server.</li>
+              <li>Login and registration were open to SQL injection and stored passwords with MD5. They now use prepared statements and password hashing.</li>
+              <li>Menu images used the wrong folder, and one image was missing.</li>
+              <li>Google sign-in was removed because its library was not included, along with some unrelated practice files.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Testing and limits</h3>
+            <p><strong>Testing:</strong> 11 test cases are written in the README (register, login, wrong password, protected pages, empty cart, order, Cash, GCash, logout). Pass or Fail results will be recorded after running them on XAMPP.</p>
+            <p><strong>Limits:</strong> item prices come from the web page, not from a products table; there is no admin page, order history or email confirmation; and it needs PHP and MySQL, so it cannot run on GitHub Pages.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="container narrow text-center">
+        <h2>Questions about this project?</h2>
+        <p>I'd love to hear from you.</p>
+        <a href="contact.html" class="btn btn-light">Contact Me</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Bryan Agraan. All rights reserved.</p>
+      <ul class="social-links">
+        <li><a href="https://github.com/11223w" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/bryan-agraan-30341b444/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">&uarr;</button>
+</body>
+</html>

@@ -74,8 +74,11 @@ function setupDropdown() {
 
 /* ---------- 3. Active navigation link (RECOMMENDED) ---------- */
 function highlightActiveLink() {
-  // Get the current file name, e.g. "about.html" (defaults to index.html)
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  // Get the current file name, e.g. "about.html" (defaults to index.html).
+  // A page can name its menu parent with <body data-nav="project.html"> so that
+  // detail pages such as project-1.html keep "Projects" highlighted.
+  const currentPage =
+    document.body.dataset.nav || window.location.pathname.split("/").pop() || "index.html";
 
   document.querySelectorAll(".nav-link").forEach((link) => {
     const linkPage = link.getAttribute("href");
