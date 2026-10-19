@@ -241,15 +241,12 @@ function setupContactForm() {
     }
 
     // Read the Formspree endpoint from the HTML form.
-    const endpoint = form.action;
+    
+const endpoint = "https://formspree.io/f/mwlvzyno";
 
-    if (
-      !endpoint ||
-      !/^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+\/?$/.test(endpoint) ||
-      endpoint.includes("https://formspree.io/f/mwlvzyno")
-    ) {
-      showToast("Please configure your Formspree form ID first.");
-      return;
+if (!form || !endpoint) {
+  showToast("Formspree endpoint is missing.");
+  return;
     }
 
     submitButton.disabled = true;
