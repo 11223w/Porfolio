@@ -1,17 +1,18 @@
+
 /* =========================================================
    Runs after the HTML is loaded (script uses "defer")
    ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
-  setupMobileMenu();      // Recommended
-  setupDropdown();        // Recommended (the "More" menu)
-  highlightActiveLink();  // Recommended
-  setupScrollReveal();    // Optional
-  setupBackToTop();       // Optional
-  setupPrintButton();     // Optional (only runs on resume.html)
-  setupContactForm();     // Recommended (only runs on contact.html)
+  setupMobileMenu();
+  setupDropdown();
+  highlightActiveLink();
+  setupScrollReveal();
+  setupBackToTop();
+  setupPrintButton();
+  setupContactForm();
 });
 
-/* ---------- 1. Mobile hamburger menu (RECOMMENDED) ---------- */
+/* ---------- 1. Mobile hamburger menu ---------- */
 function setupMobileMenu() {
   const toggle = document.getElementById("nav-toggle");
   const menu = document.getElementById("nav-menu");
@@ -26,19 +27,16 @@ function setupMobileMenu() {
     setMenu(!menu.classList.contains("open"));
   });
 
-  // Close the menu after clicking a link
   menu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => setMenu(false));
   });
 
-  // Close the menu with the Escape key
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") setMenu(false);
   });
 }
 
-/* ---------- 2. "More" dropdown menu (RECOMMENDED) ---------- */
-// On desktop it opens as a floating panel. On mobile it opens inside the menu.
+/* ---------- 2. "More" dropdown menu ---------- */
 function setupDropdown() {
   const dropdown = document.querySelector(".has-dropdown");
   const toggle = document.getElementById("dropdown-toggle");
@@ -53,12 +51,10 @@ function setupDropdown() {
     setOpen(!dropdown.classList.contains("open"));
   });
 
-  // Close when clicking anywhere outside the dropdown
   document.addEventListener("click", (event) => {
     if (!dropdown.contains(event.target)) setOpen(false);
   });
 
-  // Close with Escape and put focus back on the button
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && dropdown.classList.contains("open")) {
       setOpen(false);
@@ -66,62 +62,64 @@ function setupDropdown() {
     }
   });
 
-  // Close when keyboard focus moves out of the dropdown
   dropdown.addEventListener("focusout", (event) => {
-    if (event.relatedTarget && !dropdown.contains(event.relatedTarget)) setOpen(false);
+    if (event.relatedTarget && !dropdown.contains(event.relatedTarget)) {
+      setOpen(false);
+    }
   });
 }
 
-/* ---------- 3. Active navigation link (RECOMMENDED) ---------- */
+/* ---------- 3. Active navigation link ---------- */
 function highlightActiveLink() {
-  // Get the current file name, e.g. "about.html" (defaults to index.html).
-  // A page can name its menu parent with <body data-nav="project.html"> so that
-  // detail pages such as project-1.html keep "Projects" highlighted.
   const currentPage =
-    document.body.dataset.nav || window.location.pathname.split("/").pop() || "index.html";
+    document.body.dataset.nav ||
+    window.location.pathname.split("/").pop() ||
+    "index.html";
 
   document.querySelectorAll(".nav-link").forEach((link) => {
-    const linkPage = link.getAttribute("href");
-    if (linkPage === currentPage) {
+    if (link.getAttribute("href") === currentPage) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
 
-      // If the active link is inside "More", highlight the "More" button too
       const parentDropdown = link.closest(".has-dropdown");
       if (parentDropdown) {
-        parentDropdown.querySelector(".dropdown-toggle").classList.add("active");
+        parentDropdown
+          .querySelector(".dropdown-toggle")
+          .classList.add("active");
       }
     }
   });
 }
 
-/* ---------- 4. Scroll reveal animations (OPTIONAL) ---------- */
+/* ---------- 4. Scroll reveal animations ---------- */
 function setupScrollReveal() {
-  // Elements listed here fade in as you scroll. Add more selectors if you like.
   const targets = document.querySelectorAll(
-    ".section-title, .section-lead, .card, .about-text, .skill-list li, .timeline-item, .contact-info, .table-wrap, .callout, .quote"
+    ".section-title, .section-lead, .card, .about-text, " +
+    ".skill-list li, .timeline-item, .contact-info, " +
+    ".table-wrap, .callout, .quote"
   );
-  if (!("IntersectionObserver" in window)) return; // Older browsers: just show everything
+
+  if (!("IntersectionObserver" in window)) return;
 
   const observer = new IntersectionObserver(
     (entries, obs) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          obs.unobserve(entry.target); // Animate only once
+          obs.unobserve(entry.target);
         }
       });
     },
     { threshold: 0.15 }
   );
 
-  targets.forEach((el) => {
-    el.classList.add("reveal");
-    observer.observe(el);
+  targets.forEach((element) => {
+    element.classList.add("reveal");
+    observer.observe(element);
   });
 }
 
-/* ---------- 5. Back-to-top button (OPTIONAL) ---------- */
+/* ---------- 5. Back-to-top button ---------- */
 function setupBackToTop() {
   const button = document.getElementById("back-to-top");
   if (!button) return;
@@ -135,84 +133,174 @@ function setupBackToTop() {
   });
 }
 
-/* ---------- 6. Print / Save as PDF button on the resume (OPTIONAL) ---------- */
+/* ---------- 6. Print / Save as PDF ---------- */
 function setupPrintButton() {
   const button = document.getElementById("print-resume");
-  if (!button) return; // Not on the resume page
+  if (!button) return;
+
   button.addEventListener("click", () => window.print());
 }
 
-/* ---------- 7. Contact form validation (RECOMMENDED) ---------- */
-
-// This form has no backend, so it only checks the fields. Once you connect a
-// service (Formspree, EmailJS...), change this text to something like
-// "Thanks! Your message has been sent."
-const FORM_SUCCESS_MESSAGE = "Form validated. This demo form doesn't send messages yet.";
-
+/* ---------- 7. Contact form + Formspree ---------- */
 function setupContactForm() {
   const form = document.getElementById("contact-form");
-  if (!form) return; // Not on the contact page
+  if (!form) return;
+
+  const submitButton = form.querySelector('[type="submit"]');
+  if (!submitButton) return;
+
+  // Use our custom validation messages.
+  form.noValidate = true;
+
+  const originalButtonText = submitButton.textContent.trim();
 
   const fields = {
     name: {
       input: document.getElementById("name"),
       error: document.getElementById("name-error"),
-      check: (v) => (v.length >= 2 ? "" : "Please enter your name (at least 2 characters)."),
+      check: (value) =>
+        value.length >= 2
+          ? ""
+          : "Please enter your name (at least 2 characters).",
     },
+
     email: {
       input: document.getElementById("email"),
       error: document.getElementById("email-error"),
-      check: (v) =>
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? "" : "Please enter a valid email address.",
+      check: (value) =>
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+          ? ""
+          : "Please enter a valid email address.",
     },
+
     subject: {
       input: document.getElementById("subject"),
       error: document.getElementById("subject-error"),
-      check: (v) => (v.length >= 3 ? "" : "Please enter a subject (at least 3 characters)."),
+      check: (value) =>
+        value.length >= 3
+          ? ""
+          : "Please enter a subject (at least 3 characters).",
     },
+
     message: {
       input: document.getElementById("message"),
       error: document.getElementById("message-error"),
-      check: (v) => (v.length >= 10 ? "" : "Your message should be at least 10 characters."),
+      check: (value) =>
+        value.length >= 10
+          ? ""
+          : "Your message should be at least 10 characters.",
     },
   };
 
-  // Skip any field that is missing from the HTML, so the script never crashes
-  const activeFields = Object.values(fields).filter((f) => f.input && f.error);
+  const activeFields = Object.values(fields).filter(
+    (field) => field.input && field.error
+  );
 
-  // Validate one field and show or clear its error. Returns true if valid.
   function validateField(field) {
-    const message = field.check(field.input.value.trim());
+    const value = field.input.value.trim();
+    const message = field.check(value);
+
     field.error.textContent = message;
     field.input.classList.toggle("invalid", message !== "");
     field.input.classList.toggle("valid", message === "");
     field.input.setAttribute("aria-invalid", String(message !== ""));
+
     return message === "";
   }
 
-  // Check each field when the user leaves it
+  // Validate when leaving a field and while correcting errors.
   activeFields.forEach((field) => {
-    field.input.addEventListener("blur", () => validateField(field));
+    field.input.addEventListener("blur", () => {
+      validateField(field);
+    });
+
     field.input.addEventListener("input", () => {
-      if (field.input.classList.contains("invalid")) validateField(field);
+      if (field.input.classList.contains("invalid")) {
+        validateField(field);
+      }
     });
   });
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault(); // Stop the page from reloading
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-    // Validate every field (no short-circuit so all errors show)
+    // Prevent accidental duplicate submissions.
+    if (submitButton.disabled) return;
+
     const results = activeFields.map(validateField);
-    const allValid = results.every(Boolean);
 
-    if (allValid) {
-      // No backend here: this is where you would send the data to a service.
-      showToast(FORM_SUCCESS_MESSAGE);
-      form.reset();
-      activeFields.forEach((f) => f.input.classList.remove("valid", "invalid"));
-    } else {
-      const firstInvalid = activeFields.find((f) => f.input.classList.contains("invalid"));
+    if (!results.every(Boolean)) {
+      const firstInvalid = activeFields.find(
+        (field) => field.input.classList.contains("invalid")
+      );
+
       if (firstInvalid) firstInvalid.input.focus();
+
+      showToast("Please correct the errors before sending.");
+      return;
+    }
+
+    // Read the Formspree endpoint from the HTML form.
+    const endpoint = form.action;
+
+    if (
+      !endpoint ||
+      !/^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+\/?$/.test(endpoint) ||
+      endpoint.includes("https://formspree.io/f/mwlvzyno")
+    ) {
+      showToast("Please configure your Formspree form ID first.");
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+    form.setAttribute("aria-busy", "true");
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        const detail = Array.isArray(result.errors)
+          ? result.errors
+              .map((error) => error.message)
+              .filter(Boolean)
+              .join(" ")
+          : "";
+
+        throw new Error(
+          detail || "Unable to send your message. Please try again."
+        );
+      }
+
+      // Only clear the form after Formspree accepts the submission.
+      form.reset();
+
+      activeFields.forEach((field) => {
+        field.input.classList.remove("valid", "invalid");
+        field.input.removeAttribute("aria-invalid");
+        field.error.textContent = "";
+      });
+
+      showToast("Thank you! Your message has been sent successfully.");
+    } catch (error) {
+      console.error("Contact form error:", error);
+
+      showToast(
+        error.message ||
+          "Something went wrong. Please check your connection and try again."
+      );
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+      form.removeAttribute("aria-busy");
     }
   });
 }
@@ -221,7 +309,11 @@ function setupContactForm() {
 function showToast(message) {
   const toast = document.getElementById("toast");
   if (!toast) return;
+
   toast.textContent = message;
   toast.classList.add("show");
-  setTimeout(() => toast.classList.remove("show"), 4500);
-}
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 4500);
+    }
