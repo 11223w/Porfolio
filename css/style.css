@@ -279,6 +279,7 @@ h3 { font-size: 1.15rem; font-weight: 700; }
               0 0 90px rgba(124, 58, 237, 0.5);
 }
 .avatar-large { width: 260px; height: 260px; font-size: 4.2rem; animation: float 6s ease-in-out infinite; }
+img.avatar { object-position: center 20%; background: var(--surface); } /* profile photo: keep the face centred */
 
 /* =========================================================
    7. CARDS & PROJECTS
