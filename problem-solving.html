@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How Bryan Agraan approaches and solves coding problems.">
+  <meta name="theme-color" content="#030409">
+  <title>Problem Solving | Bryan Agraan</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== HEADER / NAVIGATION ===== -->
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a href="index.html" class="logo">Bryan<span>.dev</span></a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="project.html" class="nav-link">Projects</a></li>
+        <li><a href="skills.html" class="nav-link">Skills</a></li>
+        <li><a href="resume.html" class="nav-link">Resume</a></li>
+        <li class="has-dropdown">
+          <button type="button" class="dropdown-toggle" id="dropdown-toggle" aria-expanded="false" aria-controls="more-menu">More</button>
+          <ul class="dropdown" id="more-menu">
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="problem-solving.html" class="nav-link">Problem Solving</a></li>
+          <li><a href="security.html" class="nav-link">Security</a></li>
+          <li><a href="ailog.html" class="nav-link">AI Log</a></li>
+          <li><a href="employability.html" class="nav-link">Employability</a></li>
+          <li><a href="interview.html" class="nav-link">Interview</a></li>
+          <li><a href="certificate.html" class="nav-link">Certificates</a></li>
+          <li><a href="github.html" class="nav-link">GitHub</a></li>
+          <li><a href="reflection.html" class="nav-link">Reflection</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===== PAGE BANNER ===== -->
+    <section class="page-banner">
+      <div class="container">
+        <h1>Problem <span class="highlight">Solving</span></h1>
+        <p>How I break down bugs and challenges.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title text-center">My Process</h2>
+        <ol class="grid grid-4 steps">
+          <li class="card step">
+            <span class="step-number" aria-hidden="true">1</span>
+            <h3>Understand</h3>
+            <p>Reproduce the problem and read the error message carefully.</p>
+          </li>
+          <li class="card step">
+            <span class="step-number" aria-hidden="true">2</span>
+            <h3>Plan</h3>
+            <p>Break it into small steps and form a theory about the cause.</p>
+          </li>
+          <li class="card step">
+            <span class="step-number" aria-hidden="true">3</span>
+            <h3>Build</h3>
+            <p>Change one thing at a time and test after each change.</p>
+          </li>
+          <li class="card step">
+            <span class="step-number" aria-hidden="true">4</span>
+            <h3>Review</h3>
+            <p>Confirm the fix, clean up and write down what I learned.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title text-center">Case Studies</h2>
+        <div class="grid grid-3">
+          <article class="card case">
+            <h3>Mobile menu not opening</h3>
+            <p><strong class="case-label">Problem</strong> The hamburger button did nothing on phones.</p>
+            <p><strong class="case-label">Approach</strong> Checked the Console, then confirmed the script was loading and the element IDs matched.</p>
+            <p><strong class="case-label">Result</strong> Fixed the file path and IDs. The menu now opens and closes reliably.</p>
+          </article>
+          <article class="card case">
+            <h3>Horizontal scrolling on mobile</h3>
+            <p><strong class="case-label">Problem</strong> The page was wider than the screen at 375 px.</p>
+            <p><strong class="case-label">Approach</strong> Used DevTools to find the element that overflowed and tested at several widths.</p>
+            <p><strong class="case-label">Result</strong> Switched to flexible widths and wrapping, so nothing overflows.</p>
+          </article>
+          <article class="card case">
+            <h3>Form errors were unclear</h3>
+            <p><strong class="case-label">Problem</strong> Visitors could not tell which field was wrong.</p>
+            <p><strong class="case-label">Approach</strong> Added per-field messages, colour cues and moved focus to the first error.</p>
+            <p><strong class="case-label">Result</strong> Clear, accessible feedback on every field.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="container narrow text-center">
+        <h2>Want to talk about a project?</h2>
+        <p>I'd love to hear from you.</p>
+        <a href="contact.html" class="btn btn-light">Contact Me</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2026 Bryan Agraan. All rights reserved.</p>
+      <ul class="social-links">
+        <li><a href="https://github.com/11223w" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/bryan-agraan-30341b444/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">&uarr;</button>
+</body>
+</html>
