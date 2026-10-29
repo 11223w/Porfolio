@@ -739,6 +739,13 @@ textarea { resize: vertical; min-height: 130px; }
 .cert-download { align-self: flex-start; }
 .cert-download[hidden] { display: none; }
 
+/* 13f. Reflection box */
+.reflection-box { padding: 2rem; border-color: var(--border-strong); }
+.reflection-box h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+.reflection-box p { color: var(--text); line-height: 1.8; margin-bottom: 1rem; }
+.reflection-box p.meta { text-align: right; margin-bottom: 0; color: var(--muted); }
+@media (max-width: 520px) { .reflection-box { padding: 1.25rem; } }
+
 /* =========================================================
    14. PRINT (used by the "Print / Save as PDF" button on the resume page)
    ========================================================= */
